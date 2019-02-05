@@ -14,7 +14,7 @@ pipeline {
 			}
 		steps {
 			script {
-				app = docker.build(“Dockerhub_ID/node-app”)
+				app = docker.build("Dockerhub_ID/node-app")
 				app.inside {
 				sh 'echi $(curl localhost:8080)'
 				}
@@ -28,8 +28,8 @@ pipeline {
 		steps {
 			script {
 				docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-				app.push(“${env.BUILD_NUMBER}”)
-				app.push(“latest”)
+				app.push("${env.BUILD_NUMBER}")
+				app.push("latest")
 					}
 		}
 		}
